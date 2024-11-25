@@ -1,17 +1,19 @@
 import { Injector, NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { SwitcherComponent } from './switcher.component';
 import { createCustomElement } from '@angular/elements';
-
+import { SwitcherComponent } from './switcher.component'; // Make sure this is the correct component
 
 @NgModule({
   declarations: [SwitcherComponent],
-  imports: [CommonModule],
-  exports: [SwitcherComponent] // Export the component for use in other modules
+  imports: [],
+  entryComponents: [SwitcherComponent], // Ensure SwitcherComponent is part of entry components
 })
 export class SwitcherModule {
   constructor(private injector: Injector) {
-    const customElement = createCustomElement(SwitcherComponent, { injector });
-    customElements.define('switcher-element', customElement);
+    // Create the custom element
+    const el = createCustomElement(SwitcherComponent, { injector });
+    // Register the custom element
+    customElements.define('switcher-element', el);
   }
+
+  ngDoBootstrap() {} // Empty since we are bootstrapping via custom element
 }
