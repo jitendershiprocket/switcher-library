@@ -5,5 +5,5 @@ export declare class SwitcherComponent {
     openModal(): void;
     closeModal(): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<SwitcherComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<SwitcherComponent, "lib-switcher", never, { "data": "data"; }, {}, never, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<SwitcherComponent, "lib-switcher", never, { "data": { "alias": "data"; "required": false; }; }, {}, never, never, false, never>;
 }
