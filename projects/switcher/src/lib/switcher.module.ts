@@ -3,9 +3,8 @@ import { createCustomElement } from '@angular/elements';
 import { SwitcherComponent } from './switcher.component'; // Make sure this is the correct component
 
 @NgModule({
-  declarations: [SwitcherComponent],
-  imports: [],
-  entryComponents: [SwitcherComponent], // Ensure SwitcherComponent is part of entry components
+    declarations: [SwitcherComponent],
+    imports: []
 })
 export class SwitcherModule {
   constructor(private injector: Injector) {
