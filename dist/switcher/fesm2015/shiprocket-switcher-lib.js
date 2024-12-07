@@ -1,7 +1,7 @@
 import * as i0 from '@angular/core';
 import { Injectable, Component, Input, NgModule } from '@angular/core';
 import * as i1 from '@angular/common';
-import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 import { createCustomElement } from '@angular/elements';
 
 class SwitcherService {
@@ -90,18 +90,17 @@ class SwitcherModule {
         customElements.define('switcher-element', element);
     }
     ngDoBootstrap() {
-        // No-op: Custom elements do not need a bootstrap component
+        // Custom elements do not require explicit bootstrapping
     }
 }
 SwitcherModule.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.2.17", ngImport: i0, type: SwitcherModule, deps: [{ token: i0.Injector }], target: i0.ɵɵFactoryTarget.NgModule });
-SwitcherModule.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "12.0.0", version: "12.2.17", ngImport: i0, type: SwitcherModule, declarations: [SwitcherComponent], imports: [BrowserModule] });
-SwitcherModule.ɵinj = i0.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "12.2.17", ngImport: i0, type: SwitcherModule, imports: [[BrowserModule]] });
+SwitcherModule.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "12.0.0", version: "12.2.17", ngImport: i0, type: SwitcherModule, declarations: [SwitcherComponent], imports: [CommonModule] });
+SwitcherModule.ɵinj = i0.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "12.2.17", ngImport: i0, type: SwitcherModule, imports: [[CommonModule]] });
 i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.17", ngImport: i0, type: SwitcherModule, decorators: [{
             type: NgModule,
             args: [{
                     declarations: [SwitcherComponent],
-                    imports: [BrowserModule],
-                    entryComponents: [SwitcherComponent] // Ensure component is marked as entry
+                    imports: [CommonModule], // Use CommonModule for libraries
                 }]
         }], ctorParameters: function () { return [{ type: i0.Injector }]; } });
 

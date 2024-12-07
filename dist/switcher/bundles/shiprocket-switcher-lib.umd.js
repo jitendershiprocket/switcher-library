@@ -1,8 +1,8 @@
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('@angular/common'), require('@angular/platform-browser'), require('@angular/elements')) :
-    typeof define === 'function' && define.amd ? define('shiprocket-switcher-lib', ['exports', '@angular/core', '@angular/common', '@angular/platform-browser', '@angular/elements'], factory) :
-    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global["shiprocket-switcher-lib"] = {}, global.ng.core, global.ng.common, global.ng.platformBrowser, global.ng.elements));
-})(this, (function (exports, i0, i1, platformBrowser, elements) { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('@angular/common'), require('@angular/elements')) :
+    typeof define === 'function' && define.amd ? define('shiprocket-switcher-lib', ['exports', '@angular/core', '@angular/common', '@angular/elements'], factory) :
+    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global["shiprocket-switcher-lib"] = {}, global.ng.core, global.ng.common, global.ng.elements));
+})(this, (function (exports, i0, i1, elements) { 'use strict';
 
     function _interopNamespace(e) {
         if (e && e.__esModule) return e;
@@ -72,19 +72,18 @@
             customElements.define('switcher-element', element);
         }
         SwitcherModule.prototype.ngDoBootstrap = function () {
-            // No-op: Custom elements do not need a bootstrap component
+            // Custom elements do not require explicit bootstrapping
         };
         return SwitcherModule;
     }());
     SwitcherModule.ɵfac = i0__namespace.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.2.17", ngImport: i0__namespace, type: SwitcherModule, deps: [{ token: i0__namespace.Injector }], target: i0__namespace.ɵɵFactoryTarget.NgModule });
-    SwitcherModule.ɵmod = i0__namespace.ɵɵngDeclareNgModule({ minVersion: "12.0.0", version: "12.2.17", ngImport: i0__namespace, type: SwitcherModule, declarations: [SwitcherComponent], imports: [platformBrowser.BrowserModule] });
-    SwitcherModule.ɵinj = i0__namespace.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "12.2.17", ngImport: i0__namespace, type: SwitcherModule, imports: [[platformBrowser.BrowserModule]] });
+    SwitcherModule.ɵmod = i0__namespace.ɵɵngDeclareNgModule({ minVersion: "12.0.0", version: "12.2.17", ngImport: i0__namespace, type: SwitcherModule, declarations: [SwitcherComponent], imports: [i1.CommonModule] });
+    SwitcherModule.ɵinj = i0__namespace.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "12.2.17", ngImport: i0__namespace, type: SwitcherModule, imports: [[i1.CommonModule]] });
     i0__namespace.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.17", ngImport: i0__namespace, type: SwitcherModule, decorators: [{
                 type: i0.NgModule,
                 args: [{
                         declarations: [SwitcherComponent],
-                        imports: [platformBrowser.BrowserModule],
-                        entryComponents: [SwitcherComponent] // Ensure component is marked as entry
+                        imports: [i1.CommonModule], // Use CommonModule for libraries
                     }]
             }], ctorParameters: function () { return [{ type: i0__namespace.Injector }]; } });
 

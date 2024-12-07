@@ -1,12 +1,11 @@
 import { NgModule, Injector, DoBootstrap } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 import { createCustomElement } from '@angular/elements';
 import { SwitcherComponent } from './switcher.component';
 
 @NgModule({
   declarations: [SwitcherComponent],
-  imports: [BrowserModule],
-  entryComponents: [SwitcherComponent] // Ensure component is marked as entry
+  imports: [CommonModule], // Use CommonModule for libraries
 })
 export class SwitcherModule implements DoBootstrap {
   constructor(private injector: Injector) {
@@ -15,6 +14,6 @@ export class SwitcherModule implements DoBootstrap {
   }
 
   ngDoBootstrap() {
-    // No-op: Custom elements do not need a bootstrap component
+    // Custom elements do not require explicit bootstrapping
   }
 }
