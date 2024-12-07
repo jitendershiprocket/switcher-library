@@ -1,8 +1,8 @@
 import * as i0 from '@angular/core';
-import { Injectable, Component, Input, NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Injectable, Component, Input, NgModule } from '@angular/core';
 import * as i1 from '@angular/common';
-import { createCustomElement } from '@angular/elements';
 import { BrowserModule } from '@angular/platform-browser';
+import { createCustomElement } from '@angular/elements';
 
 class SwitcherService {
     constructor() { }
@@ -37,7 +37,7 @@ SwitcherComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "12.0.0", vers
         <p>{{ data }}</p>
       </div>
     </div>
-  `, isInline: true, styles: ["\n    .modal { display: block; position: fixed; /* Add styles for your modal */ }\n    .modal-content { /* Add styles for content */ }\n    .close { cursor: pointer; }\n  "], directives: [{ type: i1.NgIf, selector: "[ngIf]", inputs: ["ngIf", "ngIfThen", "ngIfElse"] }] });
+  `, isInline: true, styles: ["\n    .modal {\n      display: flex;\n      justify-content: center;\n      align-items: center;\n      position: fixed;\n      top: 0;\n      left: 0;\n      width: 100%;\n      height: 100%;\n      background-color: rgba(0, 0, 0, 0.5);\n      z-index: 1000;\n    }\n    .modal-content {\n      background: white;\n      padding: 20px;\n      border-radius: 8px;\n      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);\n    }\n    .close {\n      position: absolute;\n      top: 10px;\n      right: 10px;\n      font-size: 20px;\n      cursor: pointer;\n    }\n  "], directives: [{ type: i1.NgIf, selector: "[ngIf]", inputs: ["ngIf", "ngIfThen", "ngIfElse"] }] });
 i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.17", ngImport: i0, type: SwitcherComponent, decorators: [{
             type: Component,
             args: [{
@@ -52,9 +52,31 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.17", ngImpo
     </div>
   `,
                     styles: [`
-    .modal { display: block; position: fixed; /* Add styles for your modal */ }
-    .modal-content { /* Add styles for content */ }
-    .close { cursor: pointer; }
+    .modal {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+    }
+    .modal-content {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 20px;
+      cursor: pointer;
+    }
   `]
                 }]
         }], propDecorators: { data: [{
@@ -64,12 +86,12 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.17", ngImpo
 class SwitcherModule {
     constructor(injector) {
         this.injector = injector;
-        // Create the custom element
-        const el = createCustomElement(SwitcherComponent, { injector });
-        // Register the custom element
-        customElements.define('switcher-element', el);
+        const element = createCustomElement(SwitcherComponent, { injector });
+        customElements.define('switcher-element', element);
     }
-    ngDoBootstrap() { } // Empty since we are bootstrapping via custom element
+    ngDoBootstrap() {
+        // No-op: Custom elements do not need a bootstrap component
+    }
 }
 SwitcherModule.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.2.17", ngImport: i0, type: SwitcherModule, deps: [{ token: i0.Injector }], target: i0.ɵɵFactoryTarget.NgModule });
 SwitcherModule.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "12.0.0", version: "12.2.17", ngImport: i0, type: SwitcherModule, declarations: [SwitcherComponent], imports: [BrowserModule] });
@@ -79,8 +101,7 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.17", ngImpo
             args: [{
                     declarations: [SwitcherComponent],
                     imports: [BrowserModule],
-                    schemas: [CUSTOM_ELEMENTS_SCHEMA],
-                    entryComponents: [SwitcherComponent], // Ensure SwitcherComponent is part of entry components
+                    entryComponents: [SwitcherComponent] // Ensure component is marked as entry
                 }]
         }], ctorParameters: function () { return [{ type: i0.Injector }]; } });
 

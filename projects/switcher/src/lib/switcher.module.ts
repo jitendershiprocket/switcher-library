@@ -1,21 +1,20 @@
-import { CUSTOM_ELEMENTS_SCHEMA, Injector, NgModule } from '@angular/core';
-import { createCustomElement } from '@angular/elements';
-import { SwitcherComponent } from './switcher.component'; // Make sure this is the correct component
+import { NgModule, Injector, DoBootstrap } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { createCustomElement } from '@angular/elements';
+import { SwitcherComponent } from './switcher.component';
 
 @NgModule({
   declarations: [SwitcherComponent],
   imports: [BrowserModule],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA], // Add this line
-  entryComponents: [SwitcherComponent], // Ensure SwitcherComponent is part of entry components
+  entryComponents: [SwitcherComponent] // Ensure component is marked as entry
 })
-export class SwitcherModule {
+export class SwitcherModule implements DoBootstrap {
   constructor(private injector: Injector) {
-    // Create the custom element
-    const el = createCustomElement(SwitcherComponent, { injector });
-    // Register the custom element
-    customElements.define('switcher-element', el);
+    const element = createCustomElement(SwitcherComponent, { injector });
+    customElements.define('switcher-element', element);
   }
 
-  ngDoBootstrap() {} // Empty since we are bootstrapping via custom element
+  ngDoBootstrap() {
+    // No-op: Custom elements do not need a bootstrap component
+  }
 }

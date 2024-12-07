@@ -1,8 +1,8 @@
-import { Injector } from '@angular/core';
+import { Injector, DoBootstrap } from '@angular/core';
 import * as i0 from "@angular/core";
 import * as i1 from "./switcher.component";
 import * as i2 from "@angular/platform-browser";
-export declare class SwitcherModule {
+export declare class SwitcherModule implements DoBootstrap {
     private injector;
     constructor(injector: Injector);
     ngDoBootstrap(): void;
