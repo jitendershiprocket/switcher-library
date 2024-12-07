@@ -68,22 +68,24 @@
     var SwitcherModule = /** @class */ (function () {
         function SwitcherModule(injector) {
             this.injector = injector;
+            // Register the custom element with Angular's createCustomElement method
             var element = elements.createCustomElement(SwitcherComponent, { injector: injector });
             customElements.define('switcher-element', element);
         }
         SwitcherModule.prototype.ngDoBootstrap = function () {
-            // Custom elements do not require explicit bootstrapping
+            // No explicit bootstrapping required for custom elements
         };
         return SwitcherModule;
     }());
     SwitcherModule.ɵfac = i0__namespace.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.2.17", ngImport: i0__namespace, type: SwitcherModule, deps: [{ token: i0__namespace.Injector }], target: i0__namespace.ɵɵFactoryTarget.NgModule });
     SwitcherModule.ɵmod = i0__namespace.ɵɵngDeclareNgModule({ minVersion: "12.0.0", version: "12.2.17", ngImport: i0__namespace, type: SwitcherModule, declarations: [SwitcherComponent], imports: [i1.CommonModule] });
-    SwitcherModule.ɵinj = i0__namespace.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "12.2.17", ngImport: i0__namespace, type: SwitcherModule, imports: [[i1.CommonModule]] });
+    SwitcherModule.ɵinj = i0__namespace.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "12.2.17", ngImport: i0__namespace, type: SwitcherModule, imports: [[i1.CommonModule] // Import CommonModule to provide necessary directives for the component
+        ] });
     i0__namespace.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.17", ngImport: i0__namespace, type: SwitcherModule, decorators: [{
                 type: i0.NgModule,
                 args: [{
                         declarations: [SwitcherComponent],
-                        imports: [i1.CommonModule], // Use CommonModule for libraries
+                        imports: [i1.CommonModule] // Import CommonModule to provide necessary directives for the component
                     }]
             }], ctorParameters: function () { return [{ type: i0__namespace.Injector }]; } });
 

@@ -5,15 +5,16 @@ import { SwitcherComponent } from './switcher.component';
 
 @NgModule({
   declarations: [SwitcherComponent],
-  imports: [CommonModule], // Use CommonModule for libraries
+  imports: [CommonModule] // Import CommonModule to provide necessary directives for the component
 })
 export class SwitcherModule implements DoBootstrap {
   constructor(private injector: Injector) {
+    // Register the custom element with Angular's createCustomElement method
     const element = createCustomElement(SwitcherComponent, { injector });
     customElements.define('switcher-element', element);
   }
 
   ngDoBootstrap() {
-    // Custom elements do not require explicit bootstrapping
+    // No explicit bootstrapping required for custom elements
   }
 }
