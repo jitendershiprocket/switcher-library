@@ -5,7 +5,8 @@ import { SwitcherComponent } from './switcher.component';
 
 @NgModule({
   declarations: [SwitcherComponent],
-  imports: [CommonModule] // Import CommonModule to provide necessary directives for the component
+  imports: [CommonModule],
+  providers: [] // Ensure the service is provided in the module
 })
 export class SwitcherModule implements DoBootstrap {
   constructor(private injector: Injector) {
@@ -15,6 +16,6 @@ export class SwitcherModule implements DoBootstrap {
   }
 
   ngDoBootstrap() {
-    // No explicit bootstrapping required for custom elements
+    // Custom elements do not need explicit bootstrapping
   }
 }
