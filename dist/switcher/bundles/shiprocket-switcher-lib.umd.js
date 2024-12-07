@@ -52,31 +52,25 @@
               }] } });
 
   var SwitcherModule = /** @class */ (function () {
-      // Injector is injected into the class via the constructor
-      function SwitcherModule(injector) {
-          this.injector = injector;
-          // Properly pass the injector to createCustomElement
-          var element = elements.createCustomElement(SwitcherComponent, { injector: this.injector });
+      function SwitcherModule() {
+          // Create an injector instance
+          var injector = i0.Injector.create({ providers: [] });
+          var element = elements.createCustomElement(SwitcherComponent, { injector: injector });
           customElements.define('switcher-element', element);
       }
-      SwitcherModule.prototype.ngDoBootstrap = function () {
-          // Custom elements do not require explicit bootstrapping
-      };
       return SwitcherModule;
   }());
-  SwitcherModule.ɵfac = i0__namespace.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.2.17", ngImport: i0__namespace, type: SwitcherModule, deps: [{ token: i0__namespace.Injector }], target: i0__namespace.ɵɵFactoryTarget.NgModule });
+  SwitcherModule.ɵfac = i0__namespace.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.2.17", ngImport: i0__namespace, type: SwitcherModule, deps: [], target: i0__namespace.ɵɵFactoryTarget.NgModule });
   SwitcherModule.ɵmod = i0__namespace.ɵɵngDeclareNgModule({ minVersion: "12.0.0", version: "12.2.17", ngImport: i0__namespace, type: SwitcherModule, declarations: [SwitcherComponent], imports: [i1.CommonModule] });
-  SwitcherModule.ɵinj = i0__namespace.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "12.2.17", ngImport: i0__namespace, type: SwitcherModule, providers: [] // Ensure services are provided in the module
-      ,
-      imports: [[i1.CommonModule]] });
+  SwitcherModule.ɵinj = i0__namespace.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "12.2.17", ngImport: i0__namespace, type: SwitcherModule, providers: [], imports: [[i1.CommonModule]] });
   i0__namespace.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.17", ngImport: i0__namespace, type: SwitcherModule, decorators: [{
               type: i0.NgModule,
               args: [{
                       declarations: [SwitcherComponent],
                       imports: [i1.CommonModule],
-                      providers: [] // Ensure services are provided in the module
+                      providers: []
                   }]
-          }], ctorParameters: function () { return [{ type: i0__namespace.Injector }]; } });
+          }], ctorParameters: function () { return []; } });
 
   /*
    * Public API Surface of switcher
