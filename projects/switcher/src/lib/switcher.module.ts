@@ -1,10 +1,12 @@
-import { Injector, NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, Injector, NgModule } from '@angular/core';
 import { createCustomElement } from '@angular/elements';
 import { SwitcherComponent } from './switcher.component'; // Make sure this is the correct component
+import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
   declarations: [SwitcherComponent],
-  imports: [],
+  imports: [BrowserModule],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA], // Add this line
   entryComponents: [SwitcherComponent], // Ensure SwitcherComponent is part of entry components
 })
 export class SwitcherModule {
