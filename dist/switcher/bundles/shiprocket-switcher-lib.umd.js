@@ -54,18 +54,17 @@
   var SwitcherModule = /** @class */ (function () {
       function SwitcherModule(injector) {
           this.injector = injector;
-          // Register the custom element with Angular's createCustomElement method
-          var element = elements.createCustomElement(SwitcherComponent, { injector: injector });
+          var element = elements.createCustomElement(SwitcherComponent, { injector: this.injector });
           customElements.define('switcher-element', element);
       }
       SwitcherModule.prototype.ngDoBootstrap = function () {
-          // Custom elements do not need explicit bootstrapping
+          // Custom elements do not require explicit bootstrapping
       };
       return SwitcherModule;
   }());
   SwitcherModule.ɵfac = i0__namespace.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.2.17", ngImport: i0__namespace, type: SwitcherModule, deps: [{ token: i0__namespace.Injector }], target: i0__namespace.ɵɵFactoryTarget.NgModule });
   SwitcherModule.ɵmod = i0__namespace.ɵɵngDeclareNgModule({ minVersion: "12.0.0", version: "12.2.17", ngImport: i0__namespace, type: SwitcherModule, declarations: [SwitcherComponent], imports: [i1.CommonModule] });
-  SwitcherModule.ɵinj = i0__namespace.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "12.2.17", ngImport: i0__namespace, type: SwitcherModule, providers: [] // Ensure the service is provided in the module
+  SwitcherModule.ɵinj = i0__namespace.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "12.2.17", ngImport: i0__namespace, type: SwitcherModule, providers: [] // Ensure services are provided in the module
       ,
       imports: [[i1.CommonModule]] });
   i0__namespace.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.17", ngImport: i0__namespace, type: SwitcherModule, decorators: [{
@@ -73,7 +72,7 @@
               args: [{
                       declarations: [SwitcherComponent],
                       imports: [i1.CommonModule],
-                      providers: [] // Ensure the service is provided in the module
+                      providers: [] // Ensure services are provided in the module
                   }]
           }], ctorParameters: function () { return [{ type: i0__namespace.Injector }]; } });
 

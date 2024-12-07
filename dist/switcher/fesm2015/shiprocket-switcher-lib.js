@@ -74,24 +74,23 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.17", ngImpo
 class SwitcherModule {
     constructor(injector) {
         this.injector = injector;
-        // Register the custom element with Angular's createCustomElement method
-        const element = createCustomElement(SwitcherComponent, { injector });
+        const element = createCustomElement(SwitcherComponent, { injector: this.injector });
         customElements.define('switcher-element', element);
     }
     ngDoBootstrap() {
-        // Custom elements do not need explicit bootstrapping
+        // Custom elements do not require explicit bootstrapping
     }
 }
 SwitcherModule.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.2.17", ngImport: i0, type: SwitcherModule, deps: [{ token: i0.Injector }], target: i0.ɵɵFactoryTarget.NgModule });
 SwitcherModule.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "12.0.0", version: "12.2.17", ngImport: i0, type: SwitcherModule, declarations: [SwitcherComponent], imports: [CommonModule] });
-SwitcherModule.ɵinj = i0.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "12.2.17", ngImport: i0, type: SwitcherModule, providers: [] // Ensure the service is provided in the module
+SwitcherModule.ɵinj = i0.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "12.2.17", ngImport: i0, type: SwitcherModule, providers: [] // Ensure services are provided in the module
     , imports: [[CommonModule]] });
 i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.17", ngImport: i0, type: SwitcherModule, decorators: [{
             type: NgModule,
             args: [{
                     declarations: [SwitcherComponent],
                     imports: [CommonModule],
-                    providers: [] // Ensure the service is provided in the module
+                    providers: [] // Ensure services are provided in the module
                 }]
         }], ctorParameters: function () { return [{ type: i0.Injector }]; } });
 
