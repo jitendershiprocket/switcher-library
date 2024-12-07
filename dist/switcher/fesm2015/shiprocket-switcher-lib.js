@@ -72,8 +72,10 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.17", ngImpo
             }] } });
 
 class SwitcherModule {
+    // Injector is injected into the class via the constructor
     constructor(injector) {
         this.injector = injector;
+        // Properly pass the injector to createCustomElement
         const element = createCustomElement(SwitcherComponent, { injector: this.injector });
         customElements.define('switcher-element', element);
     }

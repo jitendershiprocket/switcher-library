@@ -9,7 +9,9 @@ import { SwitcherComponent } from './switcher.component';
   providers: [] // Ensure services are provided in the module
 })
 export class SwitcherModule implements DoBootstrap {
+  // Injector is injected into the class via the constructor
   constructor(private injector: Injector) {
+    // Properly pass the injector to createCustomElement
     const element = createCustomElement(SwitcherComponent, { injector: this.injector });
     customElements.define('switcher-element', element);
   }

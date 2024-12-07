@@ -52,8 +52,10 @@
               }] } });
 
   var SwitcherModule = /** @class */ (function () {
+      // Injector is injected into the class via the constructor
       function SwitcherModule(injector) {
           this.injector = injector;
+          // Properly pass the injector to createCustomElement
           var element = elements.createCustomElement(SwitcherComponent, { injector: this.injector });
           customElements.define('switcher-element', element);
       }
