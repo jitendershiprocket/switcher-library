@@ -2,6 +2,7 @@ import * as i0 from '@angular/core';
 import { Component, Input, NgModule } from '@angular/core';
 import * as i1 from '@angular/common';
 import { CommonModule } from '@angular/common';
+import { createCustomElement } from '@angular/elements';
 
 class SwitcherComponent {
     constructor() {
@@ -71,19 +72,29 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.17", ngImpo
             }] } });
 
 class SwitcherModule {
-    constructor() { }
+    // Injector is injected into the class via the constructor
+    constructor(injector) {
+        this.injector = injector;
+        // Properly pass the injector to createCustomElement
+        const element = createCustomElement(SwitcherComponent, { injector: this.injector });
+        customElements.define('switcher-element', element);
+    }
+    ngDoBootstrap() {
+        // Custom elements do not require explicit bootstrapping
+    }
 }
-SwitcherModule.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.2.17", ngImport: i0, type: SwitcherModule, deps: [], target: i0.ɵɵFactoryTarget.NgModule });
+SwitcherModule.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.2.17", ngImport: i0, type: SwitcherModule, deps: [{ token: i0.Injector }], target: i0.ɵɵFactoryTarget.NgModule });
 SwitcherModule.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "12.0.0", version: "12.2.17", ngImport: i0, type: SwitcherModule, declarations: [SwitcherComponent], imports: [CommonModule] });
-SwitcherModule.ɵinj = i0.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "12.2.17", ngImport: i0, type: SwitcherModule, providers: [], imports: [[CommonModule]] });
+SwitcherModule.ɵinj = i0.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "12.2.17", ngImport: i0, type: SwitcherModule, providers: [] // Ensure services are provided in the module
+    , imports: [[CommonModule]] });
 i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.17", ngImport: i0, type: SwitcherModule, decorators: [{
             type: NgModule,
             args: [{
                     declarations: [SwitcherComponent],
                     imports: [CommonModule],
-                    providers: []
+                    providers: [] // Ensure services are provided in the module
                 }]
-        }], ctorParameters: function () { return []; } });
+        }], ctorParameters: function () { return [{ type: i0.Injector }]; } });
 
 /*
  * Public API Surface of switcher

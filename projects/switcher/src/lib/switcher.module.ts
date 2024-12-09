@@ -1,4 +1,4 @@
-import { Injector, NgModule, DoBootstrap } from '@angular/core';
+import { NgModule, Injector, DoBootstrap } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { createCustomElement } from '@angular/elements';
 import { SwitcherComponent } from './switcher.component';
@@ -6,15 +6,17 @@ import { SwitcherComponent } from './switcher.component';
 @NgModule({
   declarations: [SwitcherComponent],
   imports: [CommonModule],
-  providers: []
+  providers: [] // Ensure services are provided in the module
 })
-export class SwitcherModule {
-  constructor() {}
+export class SwitcherModule implements DoBootstrap {
+  // Injector is injected into the class via the constructor
+  constructor(private injector: Injector) {
+    // Properly pass the injector to createCustomElement
+    const element = createCustomElement(SwitcherComponent, { injector: this.injector });
+    customElements.define('switcher-element', element);
+  }
 
-  // ngDoBootstrap() {
-  //   // Create the injector with a context that supports DI
-  //   const injector = Injector.create({ providers: [] });
-  //   const element = createCustomElement(SwitcherComponent, { injector });
-  //   customElements.define('switcher-element', element);
-  // }
+  ngDoBootstrap() {
+    // Custom elements do not require explicit bootstrapping
+  }
 }

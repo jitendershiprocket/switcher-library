@@ -1,8 +1,8 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('@angular/common')) :
-  typeof define === 'function' && define.amd ? define('shiprocket-switcher-lib', ['exports', '@angular/core', '@angular/common'], factory) :
-  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global["shiprocket-switcher-lib"] = {}, global.ng.core, global.ng.common));
-})(this, (function (exports, i0, i1) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('@angular/common'), require('@angular/elements')) :
+  typeof define === 'function' && define.amd ? define('shiprocket-switcher-lib', ['exports', '@angular/core', '@angular/common', '@angular/elements'], factory) :
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global["shiprocket-switcher-lib"] = {}, global.ng.core, global.ng.common, global.ng.elements));
+})(this, (function (exports, i0, i1, elements) { 'use strict';
 
   function _interopNamespace(e) {
     if (e && e.__esModule) return e;
@@ -52,21 +52,31 @@
               }] } });
 
   var SwitcherModule = /** @class */ (function () {
-      function SwitcherModule() {
+      // Injector is injected into the class via the constructor
+      function SwitcherModule(injector) {
+          this.injector = injector;
+          // Properly pass the injector to createCustomElement
+          var element = elements.createCustomElement(SwitcherComponent, { injector: this.injector });
+          customElements.define('switcher-element', element);
       }
+      SwitcherModule.prototype.ngDoBootstrap = function () {
+          // Custom elements do not require explicit bootstrapping
+      };
       return SwitcherModule;
   }());
-  SwitcherModule.ɵfac = i0__namespace.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.2.17", ngImport: i0__namespace, type: SwitcherModule, deps: [], target: i0__namespace.ɵɵFactoryTarget.NgModule });
+  SwitcherModule.ɵfac = i0__namespace.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.2.17", ngImport: i0__namespace, type: SwitcherModule, deps: [{ token: i0__namespace.Injector }], target: i0__namespace.ɵɵFactoryTarget.NgModule });
   SwitcherModule.ɵmod = i0__namespace.ɵɵngDeclareNgModule({ minVersion: "12.0.0", version: "12.2.17", ngImport: i0__namespace, type: SwitcherModule, declarations: [SwitcherComponent], imports: [i1.CommonModule] });
-  SwitcherModule.ɵinj = i0__namespace.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "12.2.17", ngImport: i0__namespace, type: SwitcherModule, providers: [], imports: [[i1.CommonModule]] });
+  SwitcherModule.ɵinj = i0__namespace.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "12.2.17", ngImport: i0__namespace, type: SwitcherModule, providers: [] // Ensure services are provided in the module
+      ,
+      imports: [[i1.CommonModule]] });
   i0__namespace.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.17", ngImport: i0__namespace, type: SwitcherModule, decorators: [{
               type: i0.NgModule,
               args: [{
                       declarations: [SwitcherComponent],
                       imports: [i1.CommonModule],
-                      providers: []
+                      providers: [] // Ensure services are provided in the module
                   }]
-          }], ctorParameters: function () { return []; } });
+          }], ctorParameters: function () { return [{ type: i0__namespace.Injector }]; } });
 
   /*
    * Public API Surface of switcher
