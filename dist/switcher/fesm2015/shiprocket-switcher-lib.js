@@ -1,8 +1,7 @@
 import * as i0 from '@angular/core';
-import { Component, Input, Injector, NgModule } from '@angular/core';
+import { Component, Input, NgModule } from '@angular/core';
 import * as i1 from '@angular/common';
 import { CommonModule } from '@angular/common';
-import { createCustomElement } from '@angular/elements';
 
 class SwitcherComponent {
     constructor() {
@@ -73,12 +72,6 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.17", ngImpo
 
 class SwitcherModule {
     constructor() { }
-    ngDoBootstrap() {
-        // Create the injector with a context that supports DI
-        const injector = Injector.create({ providers: [] });
-        const element = createCustomElement(SwitcherComponent, { injector });
-        customElements.define('switcher-element', element);
-    }
 }
 SwitcherModule.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.2.17", ngImport: i0, type: SwitcherModule, deps: [], target: i0.ɵɵFactoryTarget.NgModule });
 SwitcherModule.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "12.0.0", version: "12.2.17", ngImport: i0, type: SwitcherModule, declarations: [SwitcherComponent], imports: [CommonModule] });

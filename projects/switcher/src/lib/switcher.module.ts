@@ -8,13 +8,13 @@ import { SwitcherComponent } from './switcher.component';
   imports: [CommonModule],
   providers: []
 })
-export class SwitcherModule implements DoBootstrap {
+export class SwitcherModule {
   constructor() {}
 
-  ngDoBootstrap() {
-    // Create the injector with a context that supports DI
-    const injector = Injector.create({ providers: [] });
-    const element = createCustomElement(SwitcherComponent, { injector });
-    customElements.define('switcher-element', element);
-  }
+  // ngDoBootstrap() {
+  //   // Create the injector with a context that supports DI
+  //   const injector = Injector.create({ providers: [] });
+  //   const element = createCustomElement(SwitcherComponent, { injector });
+  //   customElements.define('switcher-element', element);
+  // }
 }
