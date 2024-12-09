@@ -72,8 +72,9 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.17", ngImpo
             }] } });
 
 class SwitcherModule {
-    constructor() {
-        // Create an injector instance
+    constructor() { }
+    ngDoBootstrap() {
+        // Create the injector with a context that supports DI
         const injector = Injector.create({ providers: [] });
         const element = createCustomElement(SwitcherComponent, { injector });
         customElements.define('switcher-element', element);

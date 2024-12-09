@@ -53,11 +53,13 @@
 
   var SwitcherModule = /** @class */ (function () {
       function SwitcherModule() {
-          // Create an injector instance
+      }
+      SwitcherModule.prototype.ngDoBootstrap = function () {
+          // Create the injector with a context that supports DI
           var injector = i0.Injector.create({ providers: [] });
           var element = elements.createCustomElement(SwitcherComponent, { injector: injector });
           customElements.define('switcher-element', element);
-      }
+      };
       return SwitcherModule;
   }());
   SwitcherModule.ɵfac = i0__namespace.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.2.17", ngImport: i0__namespace, type: SwitcherModule, deps: [], target: i0__namespace.ɵɵFactoryTarget.NgModule });

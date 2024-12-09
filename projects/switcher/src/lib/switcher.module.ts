@@ -1,4 +1,4 @@
-import { Injector, NgModule } from '@angular/core';
+import { Injector, NgModule, DoBootstrap } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { createCustomElement } from '@angular/elements';
 import { SwitcherComponent } from './switcher.component';
@@ -8,9 +8,11 @@ import { SwitcherComponent } from './switcher.component';
   imports: [CommonModule],
   providers: []
 })
-export class SwitcherModule {
-  constructor() {
-    // Create an injector instance
+export class SwitcherModule implements DoBootstrap {
+  constructor() {}
+
+  ngDoBootstrap() {
+    // Create the injector with a context that supports DI
     const injector = Injector.create({ providers: [] });
     const element = createCustomElement(SwitcherComponent, { injector });
     customElements.define('switcher-element', element);
